@@ -4,7 +4,7 @@ stages:
   - release
 
 before_script:
-  - apk --no-cache add curl git jq
+  - apk --no-cache add make curl git jq
 
 release:
   stage: release
