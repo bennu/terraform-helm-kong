@@ -1,7 +1,7 @@
 .PHONY: validate
 validate:
-	@utils/script.sh validate
+	@ci/release.sh validate
 
 .PHONY: release
 release: validate
-	@utils/script.sh release
+	@ci/release.sh release
