@@ -8,8 +8,8 @@ resource random_string kong_name {
 resource helm_release kong {
   name       = local.name
   atomic     = true
-  repository = "https://charts.konghq.com"
-  chart      = "kong"
+  repository = var.chart_repository
+  chart      = var.chart_name
   version    = var.chart_version
   namespace  = var.namespace
   skip_crds  = var.create_ingress_controller ? false : true

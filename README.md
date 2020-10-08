@@ -64,7 +64,9 @@ Some details about variables for this Kong module.
 | autoscaling_max_replicas | Number of maximum replicas of pods | `string` | `2` | no |
 | autoscaling_mem_average_usage | Memory average usage for autoscaling | `number` | `75` | no |
 | autoscaling_min_replicas | Number of minimum replicas of pods | `string` | `1` | no |
-| chart_version | Helm chart version | `string` | `"1.9.1"` | no |
+| chart_name | Helm chart name for Kong | `string` | `"kong"` | no |
+| chart_repository | Helm chart repository for Kong | `string` | `"https://charts.konghq.com"` | no |
+| chart_version | Helm chart version for Kong | `string` | `"1.9.1"` | no |
 | cpu_limit | CPU limit for pods in Kong deployment | `string` | `"600m"` | no |
 | cpu_request | CPU request for pods in Kong deployment | `string` | `"200m"` | no |
 | create_ingress_controller | Create an Kong Ingress Controller | `bool` | `false` | no |
