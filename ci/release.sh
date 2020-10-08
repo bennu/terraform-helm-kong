@@ -9,8 +9,7 @@ PROJECT_ID="${CI_PROJECT_ID:-}"
 
 function validate {
     echo "Checking the availability of the tag ..."
-    CHECK_VERSION_EXISTS="$(git tag -l | grep -w ${VERSION_RELEASE})"
-    if [[ -z ${CHECK_VERSION_EXISTS} ]];then
+    if [[ -z "$(git tag -l | grep -w ${VERSION_RELEASE})"]];then
         echo "The ${VERSION_RELEASE} tag is available to use.";
     else
         echo "The ${VERSION_RELEASE} tag has already been used.";
