@@ -10,8 +10,20 @@ variable namespace {
   default     = "default"
 }
 
+variable chart_repository {
+  description = "Helm chart repository for Kong"
+  type        = string
+  default     = "https://charts.konghq.com"
+}
+
+variable chart_name {
+  description = "Helm chart name for Kong"
+  type        = string
+  default     = "kong"
+}
+
 variable chart_version {
-  description = "Helm chart version"
+  description = "Helm chart version for Kong"
   type        = string
   default     = "1.9.1"
 }
