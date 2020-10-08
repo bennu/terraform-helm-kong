@@ -1,0 +1,15 @@
+image: alpine
+
+stages:
+  - release
+
+before_script:
+  - apk --no-cache add bash make curl git jq
+
+release:
+  stage: release
+  script:
+    - make $CI_JOB_NAME
+  when: manual
+  only:
+    - master
