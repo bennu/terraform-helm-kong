@@ -5,21 +5,26 @@ This repo allow to use Helm with Kong Chart as Kong Ingress Controller or as jus
 Kong Gateway is the world’s most popular open source API gateway, built for multi-cloud and hybrid, and optimized for microservices and distributed architectures
 
 ### Requirements
-  - Terraform - Version 0.13+
-  - Kubernetes - Version 0.16+
-  - PostgreSQL Database - Version 9.5+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.13 |
+| Kubernetes | >= 1.16 |
+| PostgreSQL | >= 9.5 |
+
   - Another Ingress Controler (optional)
 
 ### Components
-  - Chart Kong - Version 1.9.1
-    https://github.com/Kong/charts/tree/kong-1.9.1
+| Name | Version | URL |
+|------|---------|-----|
+| Kong Chart  | >= 0.13 | https://github.com/Kong/charts/tree/kong-1.9.1 |
 
 #### Examples main.tf
+##### Kong as API Gateway
 ```hcl
 module "kong_apigateway" {
   source = "./"
 
-  db_hos    = var.db_host
+  db_host   = var.db_host
   db_name   = var.db_name
   db_pass   = var.db_pass
   db_user   = var.db_user
@@ -31,6 +36,7 @@ module "kong_apigateway" {
 }
 ```
 
+##### Kong as Ingress Controller
 ```hcl
 module "kong_ingresscontroller" {
   source = "./"
@@ -42,26 +48,57 @@ module "kong_ingresscontroller" {
 
   create_ingress_controller = true
 }
-
 ```
-#### Module Variables
+### Module Variables
 Some details about variables for this Kong module.
 
-| Type | Key | Value | Descripcion |
-|------|-----|-------|-------------|
-| Required | db_host |  | PostgreSQL hostname |
-| Required | db_name |  | Database name |
-| Required | db_user |  | Database username |
-| Required | db_pass |  | Database password |
-| Optional | db_port | `5432` | Database port number|
-| Optional | name | `""` | Module Kong name |
-| Optional | namespace | `default` | Kong namespace |
-| Optional | cpu_limit | `600m` | CPU limit in Kong deployment for DEV stage |
-| Optional | cpu_request | `200m` | CPU request in Kong deployment for DEV stage |
-| Optional | memory_limit_ | `500Mi` | Memory limit in Kong deployment for DEV stage |
-| Optional | memory_request | `200Mi` | Memory request in Kong deployment for DEV stage |
-| Optional | enable_autoscaling | `false` | Enable autoscaling using HPA |
-| Optional | enable_proxy_ingress | `false` | Proxy exposure using another Ingress Controller |
-| Optional | enable_admin_ingress | `false`| Admin exposure using another Ingress Controller |
-| Optional | create_ingress_controller | `false` | Create an Kong Ingress Controller |
-| Optional | ingress_controller_install_crds | `false`| Install CRDS for Kong ingress controller, ONLY if using HELM 2.|
+#### Inputs
+
+| Name | Description | Type | Default | Required |
+|:----:|:-----------:|:----:|:-------:|:--------:|
+| admin_annotations | Annotations for the Kong admin service | `map` | `{}` | no |
+| admin_ingress_annotations | Annotations for Kong admin ingress | `map` | `{}` | no |
+| admin_ingress_hostname | Kong admin hostname | `string` | `"admin.local"` | no |
+| admin_ingress_path | Kong admin path on Ingress | `string` | `"/"` | no |
+| admin_service_type | Kong admin service type on Kubernetes | `string` | `"ClusterIP"` | no |
+| autoscaling_cpu_average_usage | Cpu average usage for autoscaling | `number` | `70` | no |
+| autoscaling_max_replicas | Number of maximum replicas of pods | `string` | `2` | no |
+| autoscaling_mem_average_usage | Memory average usage for autoscaling | `number` | `75` | no |
+| autoscaling_min_replicas | Number of minimum replicas of pods | `string` | `1` | no |
+| chart_version | Helm chart version | `string` | `"1.9.1"` | no |
+| cpu_limit | CPU limit for pods in Kong deployment | `string` | `"600m"` | no |
+| cpu_request | CPU request for pods in Kong deployment | `string` | `"200m"` | no |
+| create_ingress_controller | Create an Kong Ingress Controller | `bool` | `false` | no |
+| database_engine | Database engine for Kong | `string` | `"postgres"` | no |
+| db_host | PostgreSQL database hostname | `string` | n/a | yes |
+| db_name | PostgreSQL database name | `string` | n/a | yes |
+| db_pass | PostgreSQL database password | `string` | n/a | yes |
+| db_port | PostgreSQL database port | `string` | `"5432"` | no |
+| db_user | PostgreSQL database user | `string` | n/a | yes |
+| enable_admin_ingress | Admin exposure using another Ingress Controller | `bool` | `false` | no |
+| enable_admin_service | Enable Kong admin service | `bool` | `true` | no |
+| enable_autoscaling | Define if autoscale option is enable for Kong's pods | `bool` | `false` | no |
+| enable_proxy_https | Enable TLS on Kong proxy service | `bool` | `false` | no |
+| enable_proxy_ingress | Proxy exposure using another Ingress Controller | `bool` | `false` | no |
+| enable_proxy_service | Enable Kong proxy service | `bool` | `true` | no |
+| ingress_controller_install_crds | Install CRDS for Kong ingress controller, ONLY if using HELM 2. | `bool` | `false` | no |
+| kong_image | Kong docker image name | `string` | `"kong"` | no |
+| kong_tag | Kong docker image tag | `string` | `"2.1.4"` | no |
+| memory_limit | Memory limit for pods in Kong deployment | `string` | `"500Mi"` | no |
+| memory_request | Memory request for pods in Kong deployment | `string` | `"200Mi"` | no |
+| name | Value for kong name in pods | `string` | `""` | no |
+| namespace | Namespace where resources are deployed | `string` | `"default"` | no |
+| proxy_annotations | Annotations for the Kong proxy service | `map` | `{}` | no |
+| proxy_ingress_annotations | Annotations for proxy on another Ingress Controller | `map` | `{}` | no |
+| proxy_ingress_hosts | Proxy Hosts on another Ingress Controller | `list` | <pre>[<br>  "api.local"<br>]</pre> | no |
+| proxy_ingress_path | Proxy path on another Ingress Controller | `string` | `"/"` | no |
+| proxy_service_type | Kong proxy service type on Kubernetes | `string` | `"ClusterIP"` | no |
+| replica_count | Number of Kong pod replicas if autoscaling is not enable | `string` | `1` | no |
+
+#### Outputs
+
+| Name | Description |
+|:----:|:-----------:|
+| ingressclass | Kong ingress class name |
+| name | Name of helm release for kong |
+| uri_admin_service | URI for internal kong admin service |
