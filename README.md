@@ -53,7 +53,6 @@ module "kong_ingresscontroller" {
 Some details about variables for this Kong module.
 
 #### Inputs
-
 | Name | Description | Type | Default | Required |
 |:----:|:-----------:|:----:|:-------:|:--------:|
 | admin_annotations | Annotations for the Kong admin service | `map` | `{}` | no |
@@ -96,7 +95,6 @@ Some details about variables for this Kong module.
 | replica_count | Number of Kong pod replicas if autoscaling is not enable | `string` | `1` | no |
 
 #### Outputs
-
 | Name | Description |
 |:----:|:-----------:|
 | ingressclass | Kong ingress class name |
