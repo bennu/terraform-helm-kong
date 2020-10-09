@@ -22,7 +22,8 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 ##### Kong as API Gateway
 ```hcl
 module "kong_apigateway" {
-  source = "./"
+  source  = "bennu/kong/helm"
+  version = "0.0.5"
 
   db_host   = var.db_host
   db_name   = var.db_name
@@ -39,7 +40,8 @@ module "kong_apigateway" {
 ##### Kong as Ingress Controller
 ```hcl
 module "kong_ingresscontroller" {
-  source = "./"
+  source  = "bennu/kong/helm"
+  version = "0.0.5"
 
   db_host = var.db_host
   db_name = var.db_name
