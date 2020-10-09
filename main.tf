@@ -17,6 +17,13 @@ resource helm_release kong {
     name  = "env.pg_password"
     value = var.db_pass
   }
+  dynamic "set" {
+    for_each = var.chart_extra_set_configs
+    content {
+      name  = set.value["name"]
+      value = set.value["value"]
+    }
+  }
   values = [
     yamlencode(
       {

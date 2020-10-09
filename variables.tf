@@ -28,6 +28,12 @@ variable chart_version {
   default     = "1.9.1"
 }
 
+variable chart_extra_set_configs {
+  description = "Using a list of maps as `[{\"name\"=\"foo\", \"value\"=\"bar\"},]` to create dynamics blocks of 'set' to merge with values"
+  type        = list
+  default     = []
+}
+
 variable kong_image {
   description = "Kong docker image name"
   type        = string
