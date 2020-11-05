@@ -116,7 +116,7 @@ resource helm_release kong {
           }
         }
         priorityClassName = "system-cluster-critical"
-        resources         = local.resources
+        resources         = var.resources
       }
     )
   ]

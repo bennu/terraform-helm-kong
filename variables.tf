@@ -215,46 +215,8 @@ variable ingress_controller_install_crds {
   default     = false
 }
 
-variable cpu_limit {
-  description = "CPU limit for pods in Kong deployment"
-  type        = string
-  default     = "600m"
-
-  validation {
-    condition     = regex("^\\d+", var.cpu_limit) >= 600
-    error_message = "Minimum CPU limit should be 600m for Kong in Development environment."
-  }
-}
-
-variable cpu_request {
-  description = "CPU request for pods in Kong deployment"
-  type        = string
-  default     = "200m"
-
-  validation {
-    condition     = regex("^\\d+", var.cpu_request) >= 200
-    error_message = "Minimum CPU request should be 200m for Kong in Development environment."
-  }
-}
-
-variable memory_limit {
-  description = "Memory limit for pods in Kong deployment"
-  type        = string
-  default     = "500Mi"
-
-  validation {
-    condition     = regex("^\\d+", var.memory_limit) >= 500
-    error_message = "Minimum memory limit should be 500Mi for Kong in Development environment."
-  }
-}
-
-variable memory_request {
-  description = "Memory request for pods in Kong deployment"
-  type        = string
-  default     = "200Mi"
-
-  validation {
-    condition     = regex("^\\d+", var.memory_request) >= 200
-    error_message = "Minimum memory request should be 200Mi for Kong in Development environment."
-  }
+variable resources {
+  description = "Define the limits and/or requests on pod resources"
+  type        = map
+  default     = {}
 }
