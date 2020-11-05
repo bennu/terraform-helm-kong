@@ -1,4 +1,4 @@
-module kong_ingress_controller {
+module kong {
   source = "bennu/kong/helm"
 
   db_host   = var.db_host
@@ -31,13 +31,13 @@ variable db_pass {}
 
 output uri_admin {
   description = "URI for admin service"
-  value       = module.kong_ingress_controller.uri_admin_service
+  value       = module.kong.uri_admin_service
 }
 output name {
   description = "Name of helm release for kong"
-  value       = module.kong_ingress_controller.name
+  value       = module.kong.name
 }
 output ingress_class {
   description = "Kong ingress class name"
-  value       = module.kong_ingress_controller.ingressclass
+  value       = module.kong.ingressclass
 }
