@@ -1,6 +1,6 @@
 module kong_ingress_controller {
   source  = "bennu/kong/helm"
-  version = "0.0.5"
+  version = "0.0.6"
 
   db_host   = var.db_host
   db_name   = var.db_name

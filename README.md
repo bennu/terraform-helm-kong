@@ -23,7 +23,7 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 ```hcl
 module "kong_apigateway" {
   source  = "bennu/kong/helm"
-  version = "0.0.5"
+  version = "0.0.6"
 
   db_host   = var.db_host
   db_name   = var.db_name
@@ -41,7 +41,6 @@ module "kong_apigateway" {
 ```hcl
 module "kong_ingresscontroller" {
   source  = "bennu/kong/helm"
-  version = "0.0.5"
 
   db_host = var.db_host
   db_name = var.db_name
@@ -49,6 +48,18 @@ module "kong_ingresscontroller" {
   db_user = var.db_user
 
   create_ingress_controller = true
+
+  # It is possible to set a definition about the resources, so you only need to declare the request and / or the limits as you need.
+  resources = {
+    requests = {
+      cpu    = "250m"
+      memory = "275Mi"
+    }
+    limits = {
+      cpu    = "750m"
+      memory = "550Mi"
+    }
+  }
 }
 ```
 ### Module Variables
@@ -69,8 +80,6 @@ Some details about variables for this Kong module.
 | chart_name | Helm chart name for Kong | `string` | `"kong"` | no |
 | chart_repository | Helm chart repository for Kong | `string` | `"https://charts.konghq.com"` | no |
 | chart_version | Helm chart version for Kong | `string` | `"1.9.1"` | no |
-| cpu_limit | CPU limit for pods in Kong deployment | `string` | `"600m"` | no |
-| cpu_request | CPU request for pods in Kong deployment | `string` | `"200m"` | no |
 | create_ingress_controller | Create an Kong Ingress Controller | `bool` | `false` | no |
 | database_engine | Database engine for Kong | `string` | `"postgres"` | no |
 | db_host | PostgreSQL database hostname | `string` | n/a | yes |
@@ -87,8 +96,6 @@ Some details about variables for this Kong module.
 | ingress_controller_install_crds | Install CRDS for Kong ingress controller, ONLY if using HELM 2. | `bool` | `false` | no |
 | kong_image | Kong docker image name | `string` | `"kong"` | no |
 | kong_tag | Kong docker image tag | `string` | `"2.1.4"` | no |
-| memory_limit | Memory limit for pods in Kong deployment | `string` | `"500Mi"` | no |
-| memory_request | Memory request for pods in Kong deployment | `string` | `"200Mi"` | no |
 | name | Value for kong name in pods | `string` | `""` | no |
 | namespace | Namespace where resources are deployed | `string` | `"default"` | no |
 | proxy_annotations | Annotations for the Kong proxy service | `map` | `{}` | no |
@@ -97,6 +104,7 @@ Some details about variables for this Kong module.
 | proxy_ingress_path | Proxy path on another Ingress Controller | `string` | `"/"` | no |
 | proxy_service_type | Kong proxy service type on Kubernetes | `string` | `"ClusterIP"` | no |
 | replica_count | Number of Kong pod replicas if autoscaling is not enable | `string` | `1` | no |
+| resources | Define the limits and/or requests on pod resources | `map` | `{}` | no |
 
 #### Outputs
 | Name | Description |
