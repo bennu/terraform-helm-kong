@@ -1,8 +1,21 @@
 
+<a name="v0.0.6"></a>
+## [v0.0.6](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.0.5...v0.0.6)
+
+> 2020-11-04
+
+### Chore
+
+* update VERSION v0.0.6 tag
+* update README , examples information with release
+* added example using resources
+* change resources variables for kong pod
+
+
 <a name="v0.0.5"></a>
 ## [v0.0.5](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.0.4...v0.0.5)
 
-> 2020-10-09
+> 2020-10-10
 
 ### Chore
 
