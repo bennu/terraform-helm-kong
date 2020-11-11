@@ -24,6 +24,13 @@ resource helm_release kong {
       value = set.value["value"]
     }
   }
+  dynamic "set" {
+    for_each = var.extra_env_configs
+    content {
+      name  = format("env.%s",set.value["name"])
+      value = set.value["value"]
+    }
+  }
   values = [
     yamlencode(
       {
