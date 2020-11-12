@@ -1,20 +1,19 @@
 module "kong_apigateway" {
-  source  = "bennu/kong/helm"
-  version = "0.0.6"
+  source = "bennu/kong/helm"
 
-  db_host   = var.db_host
-  db_name   = var.db_name
-  db_pass   = var.db_pass
-  db_user   = var.db_user
+  db_host = var.db_host
+  db_name = var.db_name
+  db_pass = var.db_pass
+  db_user = var.db_user
 
   # We can use another namespace to deploy all components, only need to secure that is exists.
   namespace = "kong"
 
   # When enable_proxy_ingress is true we need to use another ingress controller to expose our service
-  enable_proxy_ingress      = true
-  proxy_ingress_hosts       = ["prod.api.domain.com"]
+  enable_proxy_ingress = true
+  proxy_ingress_hosts  = ["prod.api.domain.com"]
   # Here we can use annotations to define things like what ingress.class can use, ex. nginx.
-  proxy_ingress_annotations = { kubernetes.io/ingress.class: "nginx" }
+  proxy_ingress_annotations = { kubernetes.io / ingress.class : "nginx" }
 }
 
 /*
