@@ -6,24 +6,26 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 
 ### Requirements
 | Name | Version |
-|------|---------|
+|:----:|:-------:|
+| kubernetes | >= 1.16 |
+| postgreSQL | >= 9.5 |
 | terraform | >= 0.13 |
-| Kubernetes | >= 1.16 |
-| PostgreSQL | >= 9.5 |
 
   - Another Ingress Controler (optional)
 
 ### Components
 | Name | Version | URL |
-|------|---------|-----|
-| Kong Chart  | >= 0.13 | https://github.com/Kong/charts/tree/kong-1.9.1 |
+|:----:|:-------:|:---:|
+| Kong Chart | >= 0.13 | https://github.com/Kong/charts/tree/kong-1.9.1 |
+| Kong docker image | 2.1.4 (default)| https://github.com/Kong/docker-kong/releases/tag/2.1.4 |
 
 #### Examples main.tf
 ##### Kong as API Gateway
 ```hcl
 module "kong_apigateway" {
+  # Using our module your can set a versions to deploy specific features
   source  = "bennu/kong/helm"
-  version = "0.0.6"
+  version = "0.0.7"
 
   db_host   = var.db_host
   db_name   = var.db_name
@@ -49,7 +51,8 @@ module "kong_ingresscontroller" {
 
   create_ingress_controller = true
 
-  # It is possible to set a definition about the resources, so you only need to declare the request and / or the limits as you need.
+  # It is possible to set a definition about the resources quotas of pods,
+  # so you only need to declare the request and / or the limits as you need.
   resources = {
     requests = {
       cpu    = "250m"
@@ -62,6 +65,33 @@ module "kong_ingresscontroller" {
   }
 }
 ```
+
+##### Custom kong.conf
+```hcl
+module "kong" {
+  source  = "bennu/kong/helm"
+  ...
+
+  # we can configure customs values for kong.conf (https://github.com/Kong/kong/blob/master/kong.conf.default)
+  # only need to pass a list of names and values using variable "extra_env_configs" as below.
+  extra_env_configs = [
+    {
+      "name"  = "nginx_http_client_header_buffer_size",
+      "value" = "16k"
+    },
+    {
+      "name"  = "nginx_http_large_client_header_buffers",
+      "value" = "8 64k"
+    },
+    {
+      "name"  = "mem_cache_size",
+      "value" = "200m"
+    }
+  ]
+  ...
+}
+```
+
 ### Module Variables
 Some details about variables for this Kong module.
 
@@ -79,6 +109,7 @@ Some details about variables for this Kong module.
 | autoscaling_min_replicas | Number of minimum replicas of pods | `string` | `1` | no |
 | chart_name | Helm chart name for Kong | `string` | `"kong"` | no |
 | chart_repository | Helm chart repository for Kong | `string` | `"https://charts.konghq.com"` | no |
+| chart_extra_set_configs | Using a list of maps as `[{"name"="foo", "value"="bar"},]` to create dynamics blocks of 'set' to merge with values | `list` | `[]` | no |
 | chart_version | Helm chart version for Kong | `string` | `"1.9.1"` | no |
 | create_ingress_controller | Create an Kong Ingress Controller | `bool` | `false` | no |
 | database_engine | Database engine for Kong | `string` | `"postgres"` | no |
@@ -93,6 +124,7 @@ Some details about variables for this Kong module.
 | enable_proxy_https | Enable TLS on Kong proxy service | `bool` | `false` | no |
 | enable_proxy_ingress | Proxy exposure using another Ingress Controller | `bool` | `false` | no |
 | enable_proxy_service | Enable Kong proxy service | `bool` | `true` | no |
+| extra_env_configs | Define a list of maps as `[{"name"="foo", "value"="bar"},]` to configure customs values for kong.conf | `list` | `[]` | no |
 | ingress_controller_install_crds | Install CRDS for Kong ingress controller, ONLY if using HELM 2. | `bool` | `false` | no |
 | kong_image | Kong docker image name | `string` | `"kong"` | no |
 | kong_tag | Kong docker image tag | `string` | `"2.1.4"` | no |
