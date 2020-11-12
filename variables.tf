@@ -223,6 +223,6 @@ variable resources {
 
 variable extra_env_configs {
   description = "Define a list of maps as `[{\"name\"=\"foo\", \"value\"=\"bar\"},]` to configure customs values for kong.yaml"
-  type = list
-  default = []
+  type        = list
+  default     = []
 }

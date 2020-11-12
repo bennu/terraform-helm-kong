@@ -12,16 +12,16 @@ module kong {
   # we can configure customs values for kong.conf(https://github.com/Kong/kong/blob/master/kong.conf.default)
   # only need to pass a list of names and values in variable "extra_env_configs" as below.
   extra_env_configs = [
-    { 
-      "name" = "nginx_http_client_header_buffer_size",
+    {
+      "name"  = "nginx_http_client_header_buffer_size",
       "value" = "16k"
     },
-    { 
-      "name" ="nginx_http_large_client_header_buffers",
+    {
+      "name"  = "nginx_http_large_client_header_buffers",
       "value" = "8 64k"
     },
-    { 
-      "name" ="mem_cache_size",
+    {
+      "name"  = "mem_cache_size",
       "value" = "200m"
     }
   ]
