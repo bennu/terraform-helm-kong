@@ -1,11 +1,24 @@
 
-<a name="v0.0.7"></a>
-## [v0.0.7](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.0.6...v0.0.7)
+<a name="v0.1.0"></a>
+## [v0.1.0](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.0.7...v0.1.0)
 
-> 2020-11-11
+> 2020-11-16
 
 ### Chore
 
+* update README
+* update tag VERSION v0.1.0
+* updating kong chart version to 1.11.0, also kong 2.2.0
+
+
+<a name="v0.0.7"></a>
+## [v0.0.7](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.0.6...v0.0.7)
+
+> 2020-11-12
+
+### Chore
+
+* update CHANGELOG
 * update tag VERSION v0.0.7
 * update README
 * typo on variable
