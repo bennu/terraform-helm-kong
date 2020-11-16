@@ -4,6 +4,11 @@ This repo allow to use Helm with Kong Chart as Kong Ingress Controller or as jus
 ### Api Kong Gateway Content
 Kong Gateway is the world’s most popular open source API gateway, built for multi-cloud and hybrid, and optimized for microservices and distributed architectures
 
+### Stable Version
+| Name | Version |
+|:----:|:-------:|
+| Kong Module | 0.1.0 |
+
 ### Requirements
 | Name | Version |
 |:----:|:-------:|
@@ -19,6 +24,7 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 | Kong Chart | 1.11.0 | https://github.com/Kong/charts/tree/kong-1.11.0 |
 | Kong docker image | 2.2.0 | https://github.com/Kong/docker-kong/releases/tag/2.2.0 |
 | Kong for Kubernetes | 0.10 | https://konghq.com/blog/kong-for-kubernetes-0-10-released-with-ingress-v1-resource-improved-ingress-class-handling-and-more/ |
+
 
 #### Examples main.tf
 ##### Kong as API Gateway
@@ -111,7 +117,7 @@ Some details about variables for this Kong module.
 | chart_name | Helm chart name for Kong | `string` | `"kong"` | no |
 | chart_repository | Helm chart repository for Kong | `string` | `"https://charts.konghq.com"` | no |
 | chart_extra_set_configs | Using a list of maps as `[{"name"="foo", "value"="bar"},]` to create dynamics blocks of 'set' to merge with values | `list` | `[]` | no |
-| chart_version | Helm chart version for Kong | `string` | `"1.9.1"` | no |
+| chart_version | Helm chart version for Kong | `string` | `"1.11.0"` | no |
 | create_ingress_controller | Create an Kong Ingress Controller | `bool` | `false` | no |
 | database_engine | Database engine for Kong | `string` | `"postgres"` | no |
 | db_host | PostgreSQL database hostname | `string` | n/a | yes |
@@ -128,7 +134,7 @@ Some details about variables for this Kong module.
 | extra_env_configs | Define a list of maps as `[{"name"="foo", "value"="bar"},]` to configure customs values for kong.conf | `list` | `[]` | no |
 | ingress_controller_install_crds | Install CRDS for Kong ingress controller, ONLY if using HELM 2. | `bool` | `false` | no |
 | kong_image | Kong docker image name | `string` | `"kong"` | no |
-| kong_tag | Kong docker image tag | `string` | `"2.1.4"` | no |
+| kong_tag | Kong docker image tag | `string` | `"2.2.0"` | no |
 | name | Value for kong name in pods | `string` | `""` | no |
 | namespace | Namespace where resources are deployed | `string` | `"default"` | no |
 | proxy_annotations | Annotations for the Kong proxy service | `map` | `{}` | no |
