@@ -16,8 +16,9 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 ### Components
 | Name | Version | URL |
 |:----:|:-------:|:---:|
-| Kong Chart | >= 0.13 | https://github.com/Kong/charts/tree/kong-1.9.1 |
-| Kong docker image | 2.1.4 (default)| https://github.com/Kong/docker-kong/releases/tag/2.1.4 |
+| Kong Chart | 1.11.0 | https://github.com/Kong/charts/tree/kong-1.11.0 |
+| Kong docker image | 2.2.0 | https://github.com/Kong/docker-kong/releases/tag/2.2.0 |
+| Kong for Kubernetes | 0.10 | https://konghq.com/blog/kong-for-kubernetes-0-10-released-with-ingress-v1-resource-improved-ingress-class-handling-and-more/ |
 
 #### Examples main.tf
 ##### Kong as API Gateway
