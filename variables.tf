@@ -25,7 +25,7 @@ variable chart_name {
 variable chart_version {
   description = "Helm chart version for Kong"
   type        = string
-  default     = "1.11.0"
+  default     = "1.12.0"
 }
 
 variable chart_extra_set_configs {
@@ -43,7 +43,7 @@ variable kong_image {
 variable kong_tag {
   description = "Kong docker image tag"
   type        = string
-  default     = "2.2.0"
+  default     = "2.2.1-alpine"
 }
 
 variable enable_autoscaling {
