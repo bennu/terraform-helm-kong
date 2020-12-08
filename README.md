@@ -7,7 +7,7 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 ### Stable Version
 | Name | Version |
 |:----:|:-------:|
-| Kong Module | 0.1.0 |
+| Kong Module | 0.1.1 |
 
 ### Requirements
 | Name | Version |
@@ -21,8 +21,8 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 ### Components
 | Name | Version | URL |
 |:----:|:-------:|:---:|
-| Kong Chart | 1.11.0 | https://github.com/Kong/charts/tree/kong-1.11.0 |
-| Kong docker image | 2.2.0 | https://github.com/Kong/docker-kong/releases/tag/2.2.0 |
+| Kong Chart | 1.12.0 | https://github.com/Kong/charts/tree/kong-1.11.0 |
+| Kong docker image | 2.2.1 | https://github.com/Kong/docker-kong/releases/tag/2.2.1 |
 | Kong for Kubernetes | 0.10 | https://konghq.com/blog/kong-for-kubernetes-0-10-released-with-ingress-v1-resource-improved-ingress-class-handling-and-more/ |
 
 
@@ -32,7 +32,7 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 module "kong_apigateway" {
   # Using our module your can set a versions to deploy specific features
   source  = "bennu/kong/helm"
-  version = "0.0.7"
+  version = "0.1.1"
 
   db_host   = var.db_host
   db_name   = var.db_name
