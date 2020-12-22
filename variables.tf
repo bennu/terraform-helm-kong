@@ -46,6 +46,12 @@ variable kong_tag {
   default     = "2.2.1-alpine"
 }
 
+variable reg_cred {
+  description = "Registry secret credential"
+  type        = string
+  default     = ""
+}
+
 variable enable_autoscaling {
   description = "Define if autoscale option is enable for Kong's pods"
   type        = bool

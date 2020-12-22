@@ -35,8 +35,9 @@ resource helm_release kong {
     yamlencode(
       {
         image = {
-          repository = var.kong_image
-          tag        = var.kong_tag
+          repository  = var.kong_image
+          tag         = var.kong_tag
+          pullSecrets = var.reg_cred
         }
         env = {
           database    = var.database_engine
