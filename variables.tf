@@ -25,7 +25,7 @@ variable chart_name {
 variable chart_version {
   description = "Helm chart version for Kong"
   type        = string
-  default     = "1.12.0"
+  default     = "1.14.1"
 }
 
 variable chart_extra_set_configs {
