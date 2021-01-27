@@ -1,5 +1,5 @@
 module kong_ingress_controller {
-  source = "bennu/kong/helm"
+  source = "../../"
 
   db_host   = var.db_host
   db_name   = var.db_name
