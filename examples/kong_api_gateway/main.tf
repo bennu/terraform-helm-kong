@@ -11,7 +11,7 @@ module "kong_apigateway" {
 
   # When enable_proxy_ingress is true we need to use another ingress controller to expose our service
   enable_proxy_ingress = true
-  proxy_ingress_hosts  = ["prod.api.domain.com"]
+  proxy_ingress_host   = "prod.api.domain.com"
   # Here we can use annotations to define things like what ingress.class can use, ex. nginx.
   proxy_ingress_annotations = { kubernetes.io / ingress.class : "nginx" }
 }
