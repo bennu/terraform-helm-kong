@@ -4,6 +4,8 @@
 
 ### Chore
 
+* update readme file and examples for proxy ingress host
+* update Changelog
 * update block of hostname in proxy ingress
 
 ### Docs

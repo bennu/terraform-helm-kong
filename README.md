@@ -41,7 +41,7 @@ module "kong_apigateway" {
   namespace = "kong"
 
   enable_proxy_ingress      = true
-  proxy_ingress_hosts       = ["prod.api.xyz.com"]
+  proxy_ingress_host        = "prod.api.xyz.com"
   proxy_ingress_annotations = { kubernetes.io/ingress.class: "nginx" }
 }
 ```
@@ -144,7 +144,7 @@ Some details about variables for this Kong module.
 | namespace | Namespace where resources are deployed | `string` | `"default"` | no |
 | proxy_annotations | Annotations for the Kong proxy service | `map` | `{}` | no |
 | proxy_ingress_annotations | Annotations for proxy on another Ingress Controller | `map` | `{}` | no |
-| proxy_ingress_hosts | Proxy Hosts on another Ingress Controller | `list` | <pre>[<br>  "api.local"<br>]</pre> | no |
+| proxy_ingress_host | Proxy Host on another Ingress Controller | `string` | `"api.local"` | no |
 | proxy_ingress_path | Proxy path on another Ingress Controller | `string` | `"/"` | no |
 | proxy_service_type | Kong proxy service type on Kubernetes | `string` | `"ClusterIP"` | no |
 | registry | Custom registry host for be used in all the containers | `string` | `""` | no |
