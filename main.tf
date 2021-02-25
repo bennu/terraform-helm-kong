@@ -83,6 +83,11 @@ resource helm_release kong {
             path        = var.admin_ingress_path
           }
         }
+        migrations = {
+          preUpgrade  = var.migrations_pre_upgrade
+          postUpgrade = var.migrations_post_upgrade
+          resources   = var.migrations_resources
+        }
         replicaCount = var.enable_autoscaling ? var.autoscaling_min_replicas : var.replica_count
         autoscaling = {
           enabled     = var.enable_autoscaling
