@@ -46,12 +46,6 @@ variable kong_tag {
   default     = "2.2.1-alpine"
 }
 
-variable reg_cred {
-  description = "Registry secret credential"
-  type        = list
-  default     = []
-}
-
 variable enable_autoscaling {
   description = "Define if autoscale option is enable for Kong's pods"
   type        = bool
@@ -231,4 +225,46 @@ variable extra_env_configs {
   description = "Define a list of maps as `[{\"name\"=\"foo\", \"value\"=\"bar\"},]` to configure customs values for kong.conf"
   type        = list
   default     = []
+}
+
+variable bash_image {
+  description = "Bash docker image name for jobs"
+  type        = string
+  default     = "bash"
+}
+
+variable bash_image_tag {
+  description = "Bash docker image tag for jobs"
+  type        = number
+  default     = 5
+}
+
+variable registry {
+  description = "Custom registry host for be used in all the containers"
+  type        = string
+  default     = ""
+}
+
+variable reg_cred {
+  description = "Registry secret credential"
+  type        = list
+  default     = []
+}
+
+variable migrations_pre_upgrade {
+  description = "Able to activate pre upgrade containers"
+  type        = bool
+  default     = true
+}
+
+variable migrations_post_upgrade {
+  description = "Able to activate post upgrade containers"
+  type        = bool
+  default     = true
+}
+
+variable migrations_resources {
+  description = "Define the limits and/or requests for migrations containers"
+  type        = map
+  default     = {}
 }

@@ -35,9 +35,13 @@ resource helm_release kong {
     yamlencode(
       {
         image = {
-          repository  = var.kong_image
+          repository  = local.kong_image
           tag         = var.kong_tag
           pullSecrets = var.reg_cred
+        }
+        waitImage = {
+          repository = local.bash_image
+          tag        = var.bash_image_tag
         }
         env = {
           database    = var.database_engine
@@ -78,6 +82,11 @@ resource helm_release kong {
             hostname    = var.admin_ingress_hostname
             path        = var.admin_ingress_path
           }
+        }
+        migrations = {
+          preUpgrade  = var.migrations_pre_upgrade
+          postUpgrade = var.migrations_post_upgrade
+          resources   = var.migrations_resources
         }
         replicaCount = var.enable_autoscaling ? var.autoscaling_min_replicas : var.replica_count
         autoscaling = {
