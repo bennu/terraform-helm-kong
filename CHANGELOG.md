@@ -1,9 +1,33 @@
 
+<a name="v0.1.5"></a>
+## [v0.1.5](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.1.4...v0.1.5) (2021-02-24)
+
+### Docs
+
+* update readme file with variables
+* update VERSION
+
+### Feat
+
+* configure migrations block for kong chart
+* configure variable to define custom registry
+
+### Fix
+
+* typo in variables
+* conflict about variables
+
+### Merge Requests
+
+* Merge branch '21-added-a-variable-to-configure-a-custom-registry' into '22-release-v0-1-5'
+
+
 <a name="v0.1.4"></a>
 ## [v0.1.4](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.1.3...v0.1.4) (2021-01-27)
 
 ### Docs
 
+* update changelog
 * fix examples
 
 ### Feat
@@ -16,6 +40,7 @@
 
 ### Merge Requests
 
+* Merge branch '19-release-v0-1-4' into 'master'
 * Merge branch '18-update-kong-chart-1-14-1' into 'master'
 
 
