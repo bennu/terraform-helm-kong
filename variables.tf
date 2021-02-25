@@ -249,6 +249,7 @@ variable reg_cred {
   description = "Registry secret credential"
   type        = list
   default     = []
+}
 
 variable migrations_pre_upgrade {
   description = "Able to activate pre upgrade containers"
