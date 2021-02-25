@@ -232,3 +232,21 @@ variable extra_env_configs {
   type        = list
   default     = []
 }
+
+variable migrations_pre_upgrade {
+  description = "Able to activate pre upgrade containers"
+  type        = bool
+  default     = true
+}
+
+variable migrations_post_upgrade {
+  description = "Able to activate post upgrade containers"
+  type        = bool
+  default     = true
+}
+
+variable migrations_resources {
+  description = "Define the limits and/or requests for migrations containers"
+  type        = map
+  default     = {}
+}
