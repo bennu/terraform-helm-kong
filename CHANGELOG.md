@@ -1,9 +1,14 @@
 
 <a name="v0.1.5"></a>
-## [v0.1.5](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.1.4...v0.1.5) (2021-02-24)
+## [v0.1.5](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.1.4...v0.1.5) (2021-02-25)
+
+### Chore
+
+* update block of hostname in proxy ingress
 
 ### Docs
 
+* update Changelog file
 * update readme file with variables
 * update VERSION
 
@@ -19,6 +24,7 @@
 
 ### Merge Requests
 
+* Merge branch '22-release-v0-1-5' into 'master'
 * Merge branch '21-added-a-variable-to-configure-a-custom-registry' into '22-release-v0-1-5'
 
 
