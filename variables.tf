@@ -144,11 +144,12 @@ variable enable_proxy_ingress {
   default     = false
 }
 
-variable proxy_ingress_hosts {
-  description = "Proxy Hosts on another Ingress Controller"
-  type        = list
-  default     = ["api.local"]
+variable proxy_ingress_host {
+  description = "Proxy Host on another Ingress Controller"
+  type        = string
+  default     = "api.local"
 }
+
 variable proxy_ingress_path {
   description = "Proxy path on another Ingress Controller"
   type        = string

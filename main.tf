@@ -65,7 +65,7 @@ resource helm_release kong {
           ingress = {
             enabled     = var.enable_proxy_ingress
             annotations = var.proxy_ingress_annotations
-            hosts       = var.proxy_ingress_hosts
+            hostname    = var.proxy_ingress_host
             path        = var.proxy_ingress_path
           }
         }
