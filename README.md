@@ -21,10 +21,9 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 ### Components
 | Name | Version | URL |
 |:----:|:-------:|:---:|
-| Kong Chart | 1.14.1 | https://github.com/Kong/charts/releases/tag/kong-1.14.1 |
+| Kong Chart | 1.15.0 | https://github.com/Kong/charts/blob/main/charts/kong/CHANGELOG.md#1150 |
 | Kong docker image | 2.2.1 | https://github.com/Kong/docker-kong/releases/tag/2.2.1 |
 | Kong for Kubernetes | 0.10 | https://konghq.com/blog/kong-for-kubernetes-0-10-released-with-ingress-v1-resource-improved-ingress-class-handling-and-more/ |
-
 
 #### Examples main.tf
 ##### Kong as API Gateway
@@ -123,7 +122,7 @@ Some details about variables for this Kong module.
 | chart_extra_set_configs | Using a list of maps as `[{"name"="foo", "value"="bar"},]` to create dynamics blocks of 'set' to merge with values | `list` | `[]` | no |
 | chart_name | Helm chart name for Kong | `string` | `"kong"` | no |
 | chart_repository | Helm chart repository for Kong | `string` | `"https://charts.konghq.com"` | no |
-| chart_version | Helm chart version for Kong | `string` | `"1.14.1"` | no |
+| chart_version | Helm chart version for Kong | `string` | `"1.15.0"` | no |
 | create_ingress_controller | Create an Kong Ingress Controller | `bool` | `false` | no |
 | database_engine | Database engine for Kong | `string` | `"postgres"` | no |
 | db_port | PostgreSQL database port | `string` | `"5432"` | no |
