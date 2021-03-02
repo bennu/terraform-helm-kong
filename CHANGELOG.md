@@ -1,9 +1,11 @@
 
 <a name="v0.1.5"></a>
-## [v0.1.5](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.1.4...v0.1.5) (2021-02-25)
+## [v0.1.5](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.1.4...v0.1.5) (2021-03-02)
 
 ### Chore
 
+* modify kong's version chart with changes that will configure about resources
+* update changelog file
 * update readme file and examples for proxy ingress host
 * update Changelog
 * update block of hostname in proxy ingress
