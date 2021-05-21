@@ -133,7 +133,7 @@ resource "helm_release" "kong" {
             ]
           }
         }
-        priorityClassName = "system-cluster-critical"
+        priorityClassName = var.priority_class_name
         resources         = var.resources
       }
     )
