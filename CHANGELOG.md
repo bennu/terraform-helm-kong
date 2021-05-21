@@ -1,9 +1,28 @@
 
+<a name="v0.1.6"></a>
+## [v0.1.6](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.1.5...v0.1.6) (2021-05-21)
+
+### Chore
+
+* added a variable to manage priority class name option for pods
+* added a resources value to ingresscontroller to fix HPA
+
+### Docs
+
+* update readme with parameters
+
+### Merge Requests
+
+* Merge branch '25-insufficient-quota-to-match-these-scopes' into 'master'
+* Merge branch '24-hpa-doesn-t-work-with-an-ingress-controller-solution' into 'master'
+
+
 <a name="v0.1.5"></a>
 ## [v0.1.5](https://gitlab.com/bennuteam/terraform-helm-kong/compare/v0.1.4...v0.1.5) (2021-03-02)
 
 ### Chore
 
+* modify kong's version chart with changes that will configure about resources
 * modify kong's version chart with changes that will configure about resources
 * update changelog file
 * update readme file and examples for proxy ingress host
@@ -12,6 +31,7 @@
 
 ### Docs
 
+* update changelog file with v0.1.5
 * update Changelog file
 * update readme file with variables
 * update VERSION
@@ -28,6 +48,8 @@
 
 ### Merge Requests
 
+* Merge branch '22-release-v0-1-5' into 'master'
+* Merge branch '22-release-v0-1-5' into 'master'
 * Merge branch '22-release-v0-1-5' into 'master'
 * Merge branch '21-added-a-variable-to-configure-a-custom-registry' into '22-release-v0-1-5'
 
