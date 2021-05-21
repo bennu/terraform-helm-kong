@@ -7,7 +7,7 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 ### Stable Version
 | Name | Version |
 |:----:|:-------:|
-| Kong Module | 0.1.5 |
+| Kong Module | 0.1.6 |
 
 ### Requirements
 | Name | Version |
@@ -31,7 +31,7 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 module "kong_apigateway" {
   # Using our module your can set a versions to deploy specific features
   source  = "bennu/kong/helm"
-  version = "0.1.5"
+  version = "0.1.6"
 
   db_host   = var.db_host
   db_name   = var.db_name
@@ -41,7 +41,9 @@ module "kong_apigateway" {
 
   enable_proxy_ingress      = true
   proxy_ingress_host        = "prod.api.xyz.com"
-  proxy_ingress_annotations = { kubernetes.io/ingress.class: "nginx" }
+  proxy_ingress_annotations = {
+    kubernetes.io/ingress.class: "nginx"
+  }
 }
 ```
 
@@ -108,8 +110,8 @@ Some details about variables for this Kong module.
 | db_name | PostgreSQL database name | `string` | n/a | yes |
 | db_pass | PostgreSQL database password | `string` | n/a | yes |
 | db_user | PostgreSQL database user | `string` | n/a | yes |
-| admin_annotations | Annotations for the Kong admin service | `map` | `{}` | no |
-| admin_ingress_annotations | Annotations for Kong admin ingress | `map` | `{}` | no |
+| admin_annotations | Annotations for the Kong admin service | `map(any)` | `{}` | no |
+| admin_ingress_annotations | Annotations for Kong admin ingress | `map(any)` | `{}` | no |
 | admin_ingress_hostname | Kong admin hostname | `string` | `"admin.local"` | no |
 | admin_ingress_path | Kong admin path on Ingress | `string` | `"/"` | no |
 | admin_service_type | Kong admin service type on Kubernetes | `string` | `"ClusterIP"` | no |
@@ -119,7 +121,7 @@ Some details about variables for this Kong module.
 | autoscaling_min_replicas | Number of minimum replicas of pods | `string` | `1` | no |
 | bash_image | Bash docker image name for jobs | `string` | `"bash"` | no |
 | bash_image_tag | Bash docker image tag for jobs | `number` | `5` | no |
-| chart_extra_set_configs | Using a list of maps as `[{"name"="foo", "value"="bar"},]` to create dynamics blocks of 'set' to merge with values | `list` | `[]` | no |
+| chart_extra_set_configs | Using a list of maps as `[{"name"="foo", "value"="bar"},]` to create dynamics blocks of 'set' to merge with values | `list(any)` | `[]` | no |
 | chart_name | Helm chart name for Kong | `string` | `"kong"` | no |
 | chart_repository | Helm chart repository for Kong | `string` | `"https://charts.konghq.com"` | no |
 | chart_version | Helm chart version for Kong | `string` | `"1.15.0"` | no |
@@ -132,24 +134,25 @@ Some details about variables for this Kong module.
 | enable_proxy_https | Enable TLS on Kong proxy service | `bool` | `false` | no |
 | enable_proxy_ingress | Proxy exposure using another Ingress Controller | `bool` | `false` | no |
 | enable_proxy_service | Enable Kong proxy service | `bool` | `true` | no |
-| extra_env_configs | Define a list of maps as `[{"name"="foo", "value"="bar"},]` to configure customs values for kong.conf | `list` | `[]` | no |
+| extra_env_configs | Define a list of maps as `[{"name"="foo", "value"="bar"},]` to configure customs values for kong.conf | `list(any)` | `[]` | no |
 | ingress_controller_install_crds | Install CRDS for Kong ingress controller, ONLY if using HELM 2. | `bool` | `false` | no |
 | kong_image | Kong docker image name | `string` | `"kong"` | no |
 | kong_tag | Kong docker image tag | `string` | `"2.2.1-alpine"` | no |
 | migrations_post_upgrade | Able to activate post upgrade containers | `bool` | `true` | no |
 | migrations_pre_upgrade | Able to activate pre upgrade containers | `bool` | `true` | no |
-| migrations_resources | Define the limits and/or requests for migrations containers | `map` | `{}` | no |
+| migrations_resources | Define the limits and/or requests for migrations containers | `map(any)` | `{}` | no |
 | name | Value for kong name in pods | `string` | `""` | no |
 | namespace | Namespace where resources are deployed | `string` | `"default"` | no |
-| proxy_annotations | Annotations for the Kong proxy service | `map` | `{}` | no |
-| proxy_ingress_annotations | Annotations for proxy on another Ingress Controller | `map` | `{}` | no |
+| priority_class_name | Priority indicates the importance of a Pod relative to other Pods. Kubernetes already ships with two PriorityClasses: `system-cluster-critical` and `system-node-critical`. | `string` | `""` | no |
+| proxy_annotations | Annotations for the Kong proxy service | `map(any)` | `{}` | no |
+| proxy_ingress_annotations | Annotations for proxy on another Ingress Controller | `map(any)` | `{}` | no |
 | proxy_ingress_host | Proxy Host on another Ingress Controller | `string` | `"api.local"` | no |
 | proxy_ingress_path | Proxy path on another Ingress Controller | `string` | `"/"` | no |
 | proxy_service_type | Kong proxy service type on Kubernetes | `string` | `"ClusterIP"` | no |
+| reg_cred | Registry secret credential | `list(any)` | `[]` | no |
 | registry | Custom registry host for be used in all the containers | `string` | `""` | no |
-| reg_cred | Registry secret credential | `list` | `[]` | no |
 | replica_count | Number of Kong pod replicas if autoscaling is not enable | `string` | `1` | no |
-| resources | Define the limits and/or requests on pod resources | `map` | `{}` | no |
+| resources | Define the limits and/or requests on pod resources | `map(any)` | `{}` | no |
 
 #### Outputs
 | Name | Description |
