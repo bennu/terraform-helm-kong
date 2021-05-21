@@ -269,3 +269,9 @@ variable "migrations_resources" {
   type        = map(any)
   default     = {}
 }
+
+variable "priority_class_name" {
+  description = "Priority indicates the importance of a Pod relative to other Pods. Kubernetes already ships with two PriorityClasses: `system-cluster-critical` and `system-node-critical`."
+  type        = string
+  default     = ""
+}
