@@ -1,11 +1,11 @@
-resource random_string kong_name {
+resource "random_string" "kong_name" {
   count   = var.name == "" ? 1 : 0
   length  = 8
   special = false
   upper   = false
 }
 
-resource helm_release kong {
+resource "helm_release" "kong" {
   name       = local.name
   atomic     = true
   repository = var.chart_repository
@@ -52,8 +52,9 @@ resource helm_release kong {
         }
         ingressController = {
           enabled      = var.create_ingress_controller
-          installCRDs  = var.ingress_controller_install_crds
           ingressClass = local.ingressclass
+          installCRDs  = var.ingress_controller_install_crds
+          resources    = var.resources
         }
         proxy = {
           enabled     = var.enable_proxy_service
