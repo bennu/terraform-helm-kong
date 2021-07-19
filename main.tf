@@ -55,7 +55,10 @@ resource "helm_release" "kong" {
           ingressClass = local.ingressclass
           installCRDs  = var.ingress_controller_install_crds
           resources    = var.resources
-          image = var.ingress_controller_image
+          image = {
+            repository = local.ingress_image
+            tag        = var.ingress_image_tag
+          }
 
         }
         proxy = {

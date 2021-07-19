@@ -222,15 +222,15 @@ variable "resources" {
   default     = {}
 }
 
-variable "ingress_controller_image" {
-  
-  description = "Define image Ingress Controller"
-  type = map(any)
-  default = {
-            repository = "kong/kubernetes-ingress-controller"
-            tag = "1.1"
-          }
-  
+variable "ingress_image_tag" {
+  description = "Define tag for image ingress controller"
+  type        = string
+  default     = "1.1"
+}
+variable "ingress_image" {
+  description = "Define name for image ingress controller"
+  type        = string
+  default     = "kong/kubernetes-ingress-controller"
 }
 
 variable "extra_env_configs" {
