@@ -222,17 +222,6 @@ variable "resources" {
   default     = {}
 }
 
-variable "ingress_image_tag" {
-  description = "Define tag for image ingress controller"
-  type        = string
-  default     = "1.1"
-}
-variable "ingress_image" {
-  description = "Define name for image ingress controller"
-  type        = string
-  default     = "kong/kubernetes-ingress-controller"
-}
-
 variable "extra_env_configs" {
   description = "Define a list of maps as `[{\"name\"=\"foo\", \"value\"=\"bar\"},]` to configure customs values for kong.conf"
   type        = list(any)
