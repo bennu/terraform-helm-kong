@@ -153,6 +153,9 @@ Some details about variables for this Kong module.
 | registry | Custom registry host for be used in all the containers | `string` | `""` | no |
 | replica_count | Number of Kong pod replicas if autoscaling is not enable | `string` | `1` | no |
 | resources | Define the limits and/or requests on pod resources | `map(any)` | `{}` | no |
+| ingress_image_tag | Define tag for image ingress controller | `string` | `1.1` | no |
+| ingress_image | Define repository for image ingress controller| `string` | `kong/kubernetes-ingress-controller` | no |
+
 
 #### Outputs
 | Name | Description |
