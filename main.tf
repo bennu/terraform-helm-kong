@@ -54,6 +54,10 @@ resource helm_release kong {
           enabled      = var.create_ingress_controller
           installCRDs  = var.ingress_controller_install_crds
           ingressClass = local.ingressclass
+          image = {
+            repository = local.ingress_image
+            tag        = var.ingress_image_tag
+          }
         }
         proxy = {
           enabled     = var.enable_proxy_service
