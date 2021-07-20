@@ -23,6 +23,7 @@ Kong Gateway is the world’s most popular open source API gateway, built for mu
 |:----:|:-------:|:---:|
 | Kong Chart | 1.15.0 | https://github.com/Kong/charts/blob/main/charts/kong/CHANGELOG.md#1150 |
 | Kong docker image | 2.2.1 | https://github.com/Kong/docker-kong/releases/tag/2.2.1 |
+| Image IngressController | 1.1 | https://github.com/Kong/kubernetes-ingress-controller/blob/main/CHANGELOG.md#110---20201209 |
 | Kong for Kubernetes | 0.10 | https://konghq.com/blog/kong-for-kubernetes-0-10-released-with-ingress-v1-resource-improved-ingress-class-handling-and-more/ |
 
 #### Examples main.tf
@@ -136,6 +137,8 @@ Some details about variables for this Kong module.
 | enable_proxy_service | Enable Kong proxy service | `bool` | `true` | no |
 | extra_env_configs | Define a list of maps as `[{"name"="foo", "value"="bar"},]` to configure customs values for kong.conf | `list(any)` | `[]` | no |
 | ingress_controller_install_crds | Install CRDS for Kong ingress controller, ONLY if using HELM 2. | `bool` | `false` | no |
+| ingress_image | Define repository for image ingress controller| `string` | `kong/kubernetes-ingress-controller` | no |
+| ingress_image_tag | Define tag for image ingress controller | `string` | `1.1` | no |
 | kong_image | Kong docker image name | `string` | `"kong"` | no |
 | kong_tag | Kong docker image tag | `string` | `"2.2.1-alpine"` | no |
 | migrations_post_upgrade | Able to activate post upgrade containers | `bool` | `true` | no |
