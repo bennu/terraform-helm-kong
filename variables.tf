@@ -22,10 +22,10 @@ variable "chart_name" {
   default     = "kong"
 }
 
-variable "chart_version" {
+  variable "chart_version" {
   description = "Helm chart version for Kong"
   type        = string
-  default     = "1.15.0"
+  default     = "2.41.0"
 }
 
 variable "chart_extra_set_configs" {
@@ -44,7 +44,7 @@ variable "kong_image" {
 variable "kong_tag" {
   description = "Kong docker image tag"
   type        = string
-  default     = "2.2.1-alpine"
+  default     = "3.4"
 }
 
 variable "enable_autoscaling" {
@@ -163,10 +163,24 @@ variable "proxy_ingress_annotations" {
   default     = {}
 }
 
+variable "proxy_ingressClassName" {
+  description = "value"
+  type = string
+  default = ""
+  
+}
+
 variable "enable_admin_service" {
   description = "Enable Kong admin service"
   type        = bool
   default     = true
+}
+
+variable "admin_ingressClassName" {
+  description = "value"
+  type = string
+  default = ""
+  
 }
 
 variable "admin_service_type" {
@@ -204,6 +218,64 @@ variable "admin_ingress_annotations" {
   type        = map(any)
   default     = {}
 }
+
+variable "enable_manager_service" {
+  description = ""
+  type = bool
+  default = false
+}
+
+variable "manager_service_type" {
+  description = "Kong manager service type on Kubernetes"
+  type        = string
+  default     = ""
+}
+
+variable "manager_annotations" {
+  description = "Annotations for the Kong manager service"
+  type        = map(any)
+  default     = {}
+}
+
+variable "enable_manager_ingress" {
+  description = "manager exposure using another Ingress Controller"
+  type        = bool
+  default     = false
+}
+
+variable "manager_ingress_host" {
+  description = "manager Host on another Ingress Controller"
+  type        = string
+  default     = ""
+}
+
+variable "manager_ingress_path" {
+  description = "manager path on another Ingress Controller"
+  type        = string
+  default     = ""
+}
+
+variable "manager_ingress_annotations" {
+  description = "Annotations for manager on another Ingress Controller"
+  type        = map(any)
+  default     = {}
+}
+
+variable "manager_ingressClassName" {
+  description = "value"
+  type = string
+  default = ""
+  
+}
+
+variable "enable_manager_https" {
+  description = "value"
+  type = bool
+  default = false
+  
+}
+
+###
 
 variable "create_ingress_controller" {
   description = "Create an Kong Ingress Controller"

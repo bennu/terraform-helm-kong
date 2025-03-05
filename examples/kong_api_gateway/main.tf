@@ -9,6 +9,8 @@ module "kong_apigateway" {
   # We can use another namespace to deploy all components, only need to secure that is exists.
   namespace = "kong"
 
+  
+
   # When enable_proxy_ingress is true we need to use another ingress controller to expose our service
   enable_proxy_ingress = true
   proxy_ingress_host   = "prod.api.domain.com"

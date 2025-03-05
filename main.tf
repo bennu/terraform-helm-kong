@@ -60,6 +60,22 @@ resource "helm_release" "kong" {
             tag        = var.ingress_image_tag
           }
         }
+
+        manager = {
+          enabled = var.enable_manager_service
+          type        = var.manager_service_type
+          annotations = var.manager_annotations
+          tls = {
+            enabled = var.enable_manager_https
+          }
+          ingress = {
+            enabled     = var.enable_manager_ingress
+            ingressClassName = var.manager_ingressClassName
+            annotations = var.manager_ingress_annotations
+            hostname    = var.manager_ingress_host
+            path        = var.manager_ingress_path
+          }
+        }
         proxy = {
           enabled     = var.enable_proxy_service
           type        = var.proxy_service_type
@@ -69,6 +85,7 @@ resource "helm_release" "kong" {
           }
           ingress = {
             enabled     = var.enable_proxy_ingress
+            ingressClassName = var.proxy_ingressClassName
             annotations = var.proxy_ingress_annotations
             hostname    = var.proxy_ingress_host
             path        = var.proxy_ingress_path
@@ -81,8 +98,14 @@ resource "helm_release" "kong" {
           http = {
             enabled = true
           }
+
+          tls = {
+            enabled = false
+          }
+
           ingress = {
             enabled     = var.enable_admin_ingress
+            ingressClassName = var.admin_ingressClassName
             annotations = var.admin_ingress_annotations
             hostname    = var.admin_ingress_hostname
             path        = var.admin_ingress_path
